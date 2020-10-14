@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it filters robots correctly 1`] = `undefined`;
+
+exports[`renders Main page with out crashing 1`] = `undefined`;
+
+exports[`renders Main page with out crashing 2`] = `undefined`;
