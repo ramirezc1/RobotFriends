@@ -21,7 +21,7 @@ class MainPage extends React.Component {
 
     return (
       <div className="tc">
-        <h1 className="f1">RobotFriends</h1>;
+        <h1 className="f1">RobotFriends</h1>
         <SearchBox onSearchChange={onSearchChange}></SearchBox>
         <Scroll>
           {isPending ? (
