@@ -13,7 +13,6 @@ export const setSearchField = (text: string): ActionTypes => ({
   payload: text,
 });
 
-//TODO fix type of user
 export const requestRobots = () => (dispatch: Dispatch) => {
   dispatch({ type: REQUEST_ROBOTS_PENDING });
   fetch("https://jsonplaceholder.typicode.com/users")
