@@ -1,6 +1,8 @@
 import React from "react";
-
-const Scroll = ({ children }) => {
+type Props={
+  children?:JSX.Element
+}
+const Scroll = (props:Props) => {
   return (
     <div
       style={{
@@ -9,7 +11,7 @@ const Scroll = ({ children }) => {
         height: "600px",
       }}
     >
-      {children}
+      {props.children}
     </div>
   );
 };

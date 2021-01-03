@@ -3,13 +3,19 @@ import {
   REQUEST_ROBOTS_SUCCESS,
   REQUEST_ROBOTS_PENDING,
   REQUEST_ROBOTS_FAILED,
-} from "./constants";
+  SearchState,
+  RobotState,
+  ActionTypes,
+} from "./types";
 
-const initialStateSearch = {
+const initialStateSearch: SearchState = {
   searchField: "",
 };
 
-export const searchRobots = (state = initialStateSearch, action = {}) => {
+export const searchRobotsReducer = (
+  state = initialStateSearch,
+  action: ActionTypes
+): SearchState => {
   switch (action.type) {
     case CHANGE_SEARCH_FIELD:
       return { ...state, searchField: action.payload };
@@ -18,13 +24,16 @@ export const searchRobots = (state = initialStateSearch, action = {}) => {
   }
 };
 
-const initialStateRobots = {
+const initialStateRobots: RobotState = {
   isPending: false,
   robots: [],
   error: "",
 };
 
-export const requestRobots = (state = initialStateRobots, action = {}) => {
+export const requestRobotsReducer = (
+  state = initialStateRobots,
+  action: ActionTypes
+): RobotState => {
   switch (action.type) {
     case REQUEST_ROBOTS_PENDING:
       return { ...state, isPending: true };

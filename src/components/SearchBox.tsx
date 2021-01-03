@@ -1,6 +1,9 @@
 import React from "react";
+interface ISearchBoxProps {
+  onSearchChange(event: React.SyntheticEvent<HTMLInputElement>):void 
+}
 
-const SearchBox = ({ onSearchChange }) => {
+const SearchBox = ({ onSearchChange }:ISearchBoxProps) => {
   return (
     <div className="pa3">
       <input

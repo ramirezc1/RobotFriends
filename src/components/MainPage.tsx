@@ -1,11 +1,12 @@
 import React from "react";
 
-import CardList from "../components/CardList";
-import Scroll from "../components/Scroll";
-import SearchBox from "../components/SearchBox";
-import ErrorBoundary from "../components/ErrorBoundary";
+import CardList from "./CardList";
+import Scroll from "./Scroll";
+import SearchBox from "./SearchBox";
+import ErrorBoundary from "./ErrorBoundary";
+import { AppProps } from "../containers/App";
 
-class MainPage extends React.Component {
+class MainPage extends React.Component<AppProps> {
   componentDidMount() {
     this.props.onRequestRobots();
   }

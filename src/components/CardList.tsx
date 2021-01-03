@@ -1,7 +1,15 @@
 import React from "react";
+import { IRobot } from "../containers/App";
 import Card from "./Card";
 
-const CardList = ({ robots }) => {
+type Props = {
+  robots: Array<IRobot>;
+};
+const CardList: React.FunctionComponent<Props> = ({
+  robots,
+}: {
+  robots: Array<IRobot>;
+}) => {
   return (
     <div>
       {robots.map((robot) => (
