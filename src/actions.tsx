@@ -5,12 +5,17 @@ import {
   REQUEST_ROBOTS_PENDING,
 } from "./constants";
 
-export const setSearchField = (text) => ({
+
+interface Action {
+  type: any
+}
+
+export const setSearchField = (text:string) => ({
   type: CHANGE_SEARCH_FIELD,
   payload: text,
 });
 
-export const requestRobots = () => (dispatch) => {
+export const requestRobots = () => (dispatch:any) => {
   dispatch({ type: REQUEST_ROBOTS_PENDING });
   fetch("https://jsonplaceholder.typicode.com/users")
     .then((response) => response.json())
