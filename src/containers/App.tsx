@@ -1,47 +1,43 @@
 import React from "react";
 import { connect } from "react-redux";
+import { ThunkDispatch } from "redux-thunk";
 import "./App.css";
 
-import { requestRobots, setSearchField } from "../actions";
+import { requestRobots, setSearchField } from "../store/actions";
 import MainPage from "../components/MainPage";
+import { RootState } from "../index";
+import { ActionTypes } from "../store/types";
 
-const mapStateToProps = (state:any) => ({
+const mapStateToProps = (state: RootState) => ({
   searchField: state.searchRobots.searchField,
   robots: state.requestRobots.robots,
   isPending: state.requestRobots.isPending,
   error: state.requestRobots.error,
 });
 
-const mapDispatchToProps = (dispatch:any) => ({
-  onSearchChange: (event:React.SyntheticEvent<HTMLInputElement>):void => dispatch(setSearchField(event.currentTarget.value)),
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<RootState, void, ActionTypes>
+) => ({
+  onSearchChange: (event: React.SyntheticEvent<HTMLInputElement>) =>
+    dispatch(setSearchField(event.currentTarget.value)),
   onRequestRobots: () => dispatch(requestRobots()),
 });
 
-export interface IRobot{
-  name:string,
-  id:number,
-  email:string,
+export interface IRobot {
+  name: string;
+  id: number;
+  email: string;
 }
 
-export interface IRobotState{
-  searchField: string
-  robots: IRobot,
-  isPending: boolean,
-  error: string,
-}
+export type AppProps = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>;
 
-interface IRobotProps{
-  onRequestRobots?:void
-}
-
-class App extends React.Component<IRobotProps, IRobot> {
-  componentDidMount():void {
+class App extends React.Component<AppProps> {
+  componentDidMount(): void {
     this.props.onRequestRobots();
   }
-  render():JSX.Element{
-
-    return <MainPage {...this.props}></MainPage>
-    
+  render() {
+    return <MainPage {...this.props} />;
   }
 }
 

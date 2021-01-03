@@ -1,20 +1,19 @@
 import React, { Component } from "react";
 
-interface IProps {
-}
+interface IProps {}
 
 interface IState {
   hasError: boolean;
 }
 
 export default class ErrorBoundary extends Component<IProps, IState> {
-  constructor(props:any) {
+  constructor(props: IProps | Readonly<IProps>) {
     super(props);
     this.state = {
       hasError: false,
     };
   }
-  componentDidCatch(error:never, info:any) {
+  componentDidCatch() {
     this.setState({ hasError: true });
   }
   render() {
