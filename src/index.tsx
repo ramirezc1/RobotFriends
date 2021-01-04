@@ -11,7 +11,14 @@ import App from "./containers/App";
 import "tachyons";
 import * as serviceWorker from "./serviceWorker";
 
+
+const middlewares = [];
 const logger = createLogger();
+if (process.env.NODE_ENV === `development`) {
+  middlewares.push(logger);
+}
+
+middlewares.push(thunkMiddleware);
 const rootReducer = combineReducers({
   searchRobots: searchRobotsReducer,
   requestRobots: requestRobotsReducer,
@@ -19,7 +26,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunkMiddleware, logger)
+  applyMiddleware(...middlewares)
 );
 
 export type RootState = ReturnType<typeof rootReducer>;
